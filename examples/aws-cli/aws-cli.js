@@ -3,10 +3,15 @@ const org_name = document.getElementById("org_name");
 const output = document.getElementById("output");
 const result = document.getElementById("result");
 const button = document.getElementById("create");
+var hyphen = "-";
+var strORG = org_name.value.toLowerCase();
+var strResell = reseller.value.toLowerCase();
+var strSuffix = "-o365";
+var bucketname = strResell.concat(hyphen.concat(strORG.concat(strSuffix)));
 
 function awscli_run() {
     //cockpit.spawn(["/bin/aws", "--endpoint-url", "https://s3-west.vmbackup.ca", "s3api", "create-bucket", "--region", "west", "--bucket", reseller.value.toLowerCase(),"-",org_name.value.toLowerCase(),"-o365"])
-    cockpit.spawn(["echo", reseller.value.toLowerCase()"-"org_name.value.toLowerCase()"-o365"])    
+    cockpit.spawn(["echo", bucketname)    
     .stream(awscli_output)
         .then(awscli_success)
         .catch(awscli_fail);
