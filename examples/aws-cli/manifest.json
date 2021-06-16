@@ -1,0 +1,10 @@
+{
+    "version": 0,
+
+    "tools": {
+        "aws-cli": {
+            "label": "aws-cli",
+            "path": "aws-cli.html"
+        }
+    }
+}
